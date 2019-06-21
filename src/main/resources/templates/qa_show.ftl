@@ -20,7 +20,7 @@
 
     <div style="position:absolute;left:10px; top:10px;z-index:-9999;"><p id = "info">text</p></div>
 
-    <svg width="360" height="240"></svg>
+    <svg width="480" height="240"></svg>
     <script>
         var p = document.getElementById("info")
 

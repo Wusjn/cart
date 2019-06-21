@@ -1,5 +1,6 @@
 package com.liwp.reco.api.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,6 +19,9 @@ import java.util.Map;
  */
 @Controller
 public class FtlController {
+    @Value("${db.path}")
+    private String dbPath;
+
     @RequestMapping("/api/qa_show")
     public String show(ModelMap model,
                        @RequestParam("sel") String sel,
@@ -38,7 +42,7 @@ public class FtlController {
         StringBuilder linksSb = new StringBuilder();
         StringBuilder nodesSb = new StringBuilder();
         if (sel.equals("graph")){
-            File file = new File("/Users/apple/Downloads/liwp/Graph-Lucene");
+            File file = new File(dbPath);
             GraphDatabaseService graphDB = new GraphDatabaseFactory().newEmbeddedDatabase(file);
             System.out.println("Server is up and Running");
             try(Transaction tx = graphDB.beginTx()){
